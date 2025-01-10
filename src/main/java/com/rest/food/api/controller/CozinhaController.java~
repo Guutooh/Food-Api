@@ -1,0 +1,4 @@
+package com.rest.food.api.controller;
+
+public class CozinhaController {
+}
