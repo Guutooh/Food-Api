@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cozinha {
 
     @Id
@@ -19,5 +20,8 @@ public class Cozinha {
 
     @Column(nullable = false)
     private String nome;
+
+    @ManyToOne
+    private Restaurante restaurante;
 
 }
