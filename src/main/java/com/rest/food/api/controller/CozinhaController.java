@@ -35,14 +35,14 @@ public class CozinhaController {
 
     }
 
-    @PostMapping("/cadastrar")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Cozinha cadastrar(@Valid @RequestBody Cozinha cozinha) {
         return cozinhaService.salvar(cozinha);
     }
 
 
-    @PutMapping("atualizar/{cozinhaId}")
+    @PutMapping("/{cozinhaId}")
     public Cozinha atualizar(@PathVariable Long cozinhaId, @RequestBody Cozinha cozinha) {
 
         Cozinha cozinhaAtual = cozinhaService.bucarOufalhar(cozinhaId);
@@ -53,11 +53,11 @@ public class CozinhaController {
 
     }
 
-    @DeleteMapping("deletar/{cozinhaId}")
+    @DeleteMapping("/{cozinhaId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable long cozinhaId) {
 
-        cozinhaService.excuir(cozinhaId);
+        cozinhaService.excluir(cozinhaId);
     }
 
 }
