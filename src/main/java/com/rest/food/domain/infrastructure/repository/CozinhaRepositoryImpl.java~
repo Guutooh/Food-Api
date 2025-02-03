@@ -1,4 +1,0 @@
-package com.rest.food.domain.infrastructure.repository;
-
-public class RestauranteRepositoryImpl {
-}
