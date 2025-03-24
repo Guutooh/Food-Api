@@ -77,6 +77,8 @@ public class RestauranteController {
     @PatchMapping("/{restauranteId}")
     public Restaurante atualizarParcial(@PathVariable Long restauranteId,
                                         @RequestBody Map<String, Object> campos, HttpServletRequest request) {
+
+
         Restaurante restauranteAtual = restauranteService.buscarOuFalhar(restauranteId);
 
         merge(campos, restauranteAtual, request);

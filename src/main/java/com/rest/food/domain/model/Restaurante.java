@@ -41,6 +41,10 @@ public class Restaurante {
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
+    @Embedded
+    @JsonIgnore
+    private Endereco endereco;
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "restaurante_forma_pagamento", //nome da tabela intermediaria
