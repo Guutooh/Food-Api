@@ -21,8 +21,7 @@ public interface RestauranteRepository extends CustomJpaRepository<Restaurante, 
 
     List<Restaurante> queryByTaxaFreteBetween(BigDecimal taxaInicial, BigDecimal taxaFinal);
 
-    //@Query("from Restaurante where nome like %:nome% and cozinha.id = :id")
-    // --> com o arquivo orm em resources não é necessário a anotação
+    @Query("from Restaurante where nome like %:nome% and cozinha.id = :id")
     List<Restaurante> consultarPorNome(String nome, @Param("id") Long cozinha);
 
 //	List<Restaurante> findByNomeContainingAndCozinhaId(String nome, Long cozinha);

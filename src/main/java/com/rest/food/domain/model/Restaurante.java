@@ -1,5 +1,6 @@
 package com.rest.food.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -12,6 +13,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -37,5 +40,15 @@ public class Restaurante {
     @ManyToOne
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(name = "restaurante_forma_pagamento", //nome da tabela intermediaria
+            joinColumns = @JoinColumn(name = "restaurante_id"), //atributo que será chave primaria
+            inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id")) //chave inversa da outra tabela
+    private List<FormaPagamento> formasPagamento = new ArrayList<>();
+
+
+
 
 }
