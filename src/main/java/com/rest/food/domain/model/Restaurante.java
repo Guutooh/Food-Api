@@ -58,12 +58,19 @@ public class Restaurante {
     @Column(nullable = false, columnDefinition = "datetime")
     private LocalDateTime dataAtualizacao;
 
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "restaurante")
+    private List<Produto> produtos = new ArrayList<>();
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "restaurante_forma_pagamento", //nome da tabela intermediaria
             joinColumns = @JoinColumn(name = "restaurante_id"), //atributo que será chave primaria
             inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id")) //chave inversa da outra tabela
     private List<FormaPagamento> formasPagamento = new ArrayList<>();
+
+
 
 
 
