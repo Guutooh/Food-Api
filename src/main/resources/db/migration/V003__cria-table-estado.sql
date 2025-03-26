@@ -1,21 +1,19 @@
-CREATE TABLE ESTADO (
-    ID BIGINT NOT NULL AUTO_INCREMENT,
-    NOME VARCHAR(80) NOT NULL,
-    PRIMARY KEY (ID)
-) ENGINE=INNODB DEFAULT CHARSET=UTF8;
+create table estado (
+	id bigint not null auto_increment,
+	nome varchar(80) not null,
 
-INSERT INTO ESTADO (NOME) SELECT DISTINCT NOME_ESTADO FROM CIDADE;
+	primary key (id)
+) engine=InnoDB default charset=utf8;
 
-ALTER TABLE CIDADE ADD COLUMN ESTADO_ID BIGINT NOT NULL;
+insert into estado (nome) select distinct nome_estado from cidade;
 
-UPDATE CIDADE C SET C.ESTADO_ID = (SELECT E.ID FROM ESTADO E WHERE E.NOME = C.NOME_ESTADO);
+alter table cidade add column estado_id bigint not null;
 
-ALTER TABLE CIDADE ADD CONSTRAINT FK_CIDADE_ESTADO
-FOREIGN KEY (ESTADO_ID) REFERENCES ESTADO (ID);
+update cidade c set c.estado_id = (select e.id from estado e where e.nome = c.nome_estado);
 
-ALTER TABLE CIDADE DROP COLUMN NOME_ESTADO;
+alter table cidade add constraint fk_cidade_estado
+foreign key (estado_id) references estado (id);
 
-ALTER TABLE CIDADE CHANGE NOME_CIDADE NOME VARCHAR(80) NOT NULL;
+alter table cidade drop column nome_estado;
 
-
-
+alter table cidade change nome_cidade nome varchar(80) not null;

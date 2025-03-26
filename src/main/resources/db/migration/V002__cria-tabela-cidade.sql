@@ -1,6 +1,7 @@
-CREATE TABLE CIDADE(
-    ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-    NOME_CIDADE VARCHAR(80) NOT NULL,
-    NOME_ESTADO VARCHAR(80) NOT NULL
+create table cidade (
+	id bigint not null auto_increment,
+	nome_cidade varchar(80) not null,
+	nome_estado varchar(80) not null,
 
-)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+	primary key (id)
+) engine=InnoDB default charset=utf8;
