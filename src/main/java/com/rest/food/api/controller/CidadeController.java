@@ -30,7 +30,7 @@ public class CidadeController {
     @GetMapping("buscar/{cidadeId}")
     public Cidade buscar(@PathVariable Long cidadeId) {
 
-        return cidadeService.bucarOufalhar(cidadeId);
+        return cidadeService.buscarOuFalhar(cidadeId);
 
     }
 
@@ -49,7 +49,7 @@ public class CidadeController {
     public Cidade atualizar(@PathVariable Long cidadeId,
                             @RequestBody Cidade cidade) {
 
-        Cidade cidadeAtual = cidadeService.bucarOufalhar(cidadeId);
+        Cidade cidadeAtual = cidadeService.buscarOuFalhar(cidadeId);
 
         BeanUtils.copyProperties(cidade, cidadeAtual, "id");
 

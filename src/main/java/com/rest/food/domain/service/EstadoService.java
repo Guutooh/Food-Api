@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class EstadoService {
 
     public static final String Msg_Estado_Em_Uso = "Estado de código %d não pode ser removido, pois está em uso";
+
     @Autowired
     EstadoRepository estadoRepository;
 
